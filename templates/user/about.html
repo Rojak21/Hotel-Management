@@ -1,0 +1,390 @@
+{% extends 'user/base_generic.html' %}
+{% load static%}
+{% block title %}AboutUs - Foodies{% endblock %}
+{% comment %} <!DOCTYPE html>
+ <html lang="en"> {% endcomment %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/client_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    {% block content %}
+    <style>
+        #menus .show {
+            /* font-size: medium; */
+            padding: 10px 24px;
+            background-color: white;
+            color: purple;
+            border: 2px solid purple;
+            border-radius: 10px;
+            font-family: 'Merriweather', serif;
+            margin-left: 5rem;
+        }
+
+        #menus .show:hover {
+            background-color: purple;
+            color: white;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .flip-box {
+            background-color: transparent;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #f1f1f1;
+            perspective: 1000px;
+            /* margin: auto; */
+            display:inline-block;
+            margin-left: 10rem;
+            
+        }
+
+        .flip-box-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-box:hover .flip-box-inner {
+            transform: rotateX(180deg);
+        }
+
+        .flip-box-front,
+        .flip-box-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-box-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        .flip-box-back {
+            background-color:plum;
+            color: white;
+            transform: rotateX(180deg);
+        }
+        .mySlides {display:none;}
+       .aboutus p {
+
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+    </style>
+</head>
+
+<body>
+    {% comment %} <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">HMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> {% endcomment %}
+
+    {% comment %} <section>
+        <div class="hero-image">
+            <img src="{% static 'images/admin.jpg' %}" class="img-fluid rounded-start" alt="...">
+            <div class="hero-text">
+                <h1 style="font-size:50px">Dont get hungry</h1>
+                <h3>We are here to serve you?</h3>
+                <button class="menu">View Menu</button>
+            </div>
+        </div>
+    </section><br><br><br> {% endcomment %}
+
+    {% comment %} <section class="aboutus">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static 'images/about.jpg' %}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <br>
+                        <h1 class="card-title">About Us</h1><br><br>
+                        <p class="card-text">Salt is based on a very simple mantra; “Most delicious Indian recipes that
+                            reflect the real taste and soul of Indian Food which is served in a cheerful restaurant
+                            where food lovers can relax and eat with their fingers if they wish.” At SALT we experiment
+                            with the finest Indian spices and ingredients along with diverse cooking techniques to
+                            recreate traditional recipes, providing each diner with an aromatic. visual and flavorful
+                            dining experience..</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><br><br><br></br>
+    <section class="slider">
+        <div class="w3-content w3-section" style="max-width:500px">
+            <img class="mySlides" src="../src/home.jpg" style="width:100%">
+            <img class="mySlides" src="../src/admin.jpg" style="width:100%">
+            <img class="mySlides" src="../src/lunch.jpg" style="width:100%">
+          </div>
+           {% endcomment %}
+
+       
+    {% comment %} </section><br>
+    <section id="menus">
+        <div class="container">
+            <center>
+                <h1>MENU</h1>
+            </center> <br>
+            <div class="card-group mx-3">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'images/breakfast.jpg' %}" alt="Card image cap" style="height:260px">
+                    <div class="card-body">
+                        <h5 class="card-title">Breakfast</h5>
+                        <p class="card-text"> South Indian Breakfast,Paratha, Cheela, Thepla,Sandwich</p>
+                    </div>
+                </div>
+                <div class="card mx-3">
+                    <img class="card-img-top" src="{% static 'images/lunch.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lunch</h5>
+                        <p class="card-text">South Indian Thalis,North Indain Thalis,Punjabi Thalis</p>
+                    </div>
+                </div>
+                <div class="card mx-3">
+                    <img class="card-img-top" src="{% static 'images/dinner.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Dinner</h5>
+                        <p class="card-text">Rice dish: Jeera Rice,Bread: Naan,Raita: Boondi raita</p>
+                    </div>
+                </div>
+            </div><br><br>
+            <button class="show" onclick="window.location.href='menu.html'">View Menu</button>
+        </div>
+    </section><br><br> {% endcomment %}<br><br><br><br>
+    <section class="features">
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src="{% static 'images/admin.jpg' %}" width="350px">
+                </div>
+                <div class="flip-box-back">
+                   <br> <i class="fa-solid fa-truck" style="font-size: 2rem; color: purple;"></i>
+                   <h4 style="color: purple;font-family: 'Merriweather', serif;">Reliable Delivery</h4>
+                   <h6 style="color:white">Offer delivery on all website order within house staff throughour delivery partner</h6>
+                </div>
+            </div>
+        </div>
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src="{% static 'images/home.jpg' %}" width="350px">
+                </div>
+                <div class="flip-box-back">
+                    <br><i class="fas fa-utensils"style="font-size: 2rem; color: purple;"></i> 
+                    <h4 style="color: purple;font-family: 'Merriweather', serif;">Delicious Food</h4>
+                    <h6 style="color:white">Delicious meals are tasty, appetizing, scrumptious, yummy, luscious, delectable, mouth-watering, fit for a king.</h6>
+                 </div>
+            </div>
+        </div>
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src="{% static 'images/hygine.jpg' %}" width="350px">
+                </div>
+                <div class="flip-box-back">
+                    <br><i class="fa-solid fa-pump-soap" style="font-size: 2rem; color: purple;"></i>
+                    <h4 style="color: purple;font-family: 'Merriweather', serif;">Food Hygiene</h4>
+                    <h6 style="color:white">The primary purpose of food hygiene policies in restaurants is to create a framework that reduces.</h6>
+                </div>
+            </div>
+        </div>
+
+    </section><br><br><br><br>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start  text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+            style="background-color:purple;">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span style="color:white;">Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3" style="color:purple;"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="home.html" class="text-reset">Home</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset">About Us</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Menu</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Contact Us</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3" style="color:purple;"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3" style="color:purple;"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3" style="color:purple;"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3" style="color:purple;"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color:purple;color: white;">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">hms.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <script>
+        var myIndex = 0;
+        carousel();
+        
+        function carousel() {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          myIndex++;
+          if (myIndex > x.length) {myIndex = 1}    
+          x[myIndex-1].style.display = "block";  
+          setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+        </script>
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+        
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+        
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          if (n > x.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";  
+          }
+          x[slideIndex-1].style.display = "block";  
+        }
+        </script>
+        
+{% endblock %} 
+        
+
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+
+</html> {% endcomment %}

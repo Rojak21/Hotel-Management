@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/client_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .container {
+  overflow: hidden;
+}
+
+.filterDiv {
+  float: left;
+  /* background-color: #2196F3; */
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+.filterDiv img{
+  /* padding: 50px; */
+  /* background-color: green; */
+  transition: transform .2s;
+  /* width: 200px;
+  height: 200px;
+  margin: 0 auto; */
+}
+
+.filterDiv img:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color:plum;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background to the active button */
+.btn.active {
+  background-color: purple;
+  color: white;
+}
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">HMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><br><br>
+
+
+
+    <div id="myBtnContainer">
+        <h1 style="color: purple;font-family:'Merriweather', serif;text-align: center;">Our Menu</h1><br>
+        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="btn" onclick="filterSelection('breakfast')"> Breakfast</button>
+        <button class="btn" onclick="filterSelection('lunch')"> Lunch</button>
+        <button class="btn" onclick="filterSelection('dinner')"> Dinner</button>
+        <button class="btn" onclick="filterSelection('bevarages')"> Bevarages</button>
+      </div><br><br><br>
+      
+      <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+      <div class="container">
+        <div class="filterDiv breakfast"><img src="../src/idli.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/lunch.jpg"width="70px"></div>
+        <div class="filterDiv breakfast"><img src="../src/dinner.jpg"width="70px"></div>
+        <div class="filterDiv bevarages"><img src="../src/lunch.jpg"width="70px"></div>
+        <div class="filterDiv dinner"><img src="../src/masala dosa.jpg"width="70px"></div>
+        <div class="filterDiv bevarages"><img src="../src/home.jpg"width="70px"></div>
+        <div class="filterDiv breakfast"><img src="../src/admin.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/lunch.jpg"width="80px"></div>
+        <div class="filterDiv bevarages"><img src="../src/footer.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/idli.jpg"width="80px"></div>
+        <div class="filterDiv breakfast"><img src="../src/img.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/f1.jpg"width="80px"></div>
+        <div class="filterDiv lunch"><img src="../src/dinner.jpg"width="80px"></div>
+        <div class="filterDiv bevarages"><img src="../src/footer.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/idli.jpg"width="80px"></div>
+        <div class="filterDiv breakfast"><img src="../src/img.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/f1.jpg"width="80px"></div>
+        <div class="filterDiv lunch"><img src="../src/dinner.jpg"width="80px"></div>
+        <div class="filterDiv bevarages"><img src="../src/footer.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/idli.jpg"width="80px"></div>
+        <div class="filterDiv breakfast"><img src="../src/img.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/f1.jpg"width="80px"></div>
+        <div class="filterDiv lunch"><img src="../src/dinner.jpg"width="80px"></div>
+        <div class="filterDiv bevarages"><img src="../src/footer.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/idli.jpg"width="80px"></div>
+        <div class="filterDiv breakfast"><img src="../src/img.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/f1.jpg"width="80px"></div>
+        <div class="filterDiv lunch"><img src="../src/dinner.jpg"width="80px"></div>
+        <div class="filterDiv bevarages"><img src="../src/footer.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/idli.jpg"width="80px"></div>
+        <div class="filterDiv breakfast"><img src="../src/img.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/f1.jpg"width="80px"></div>
+        <div class="filterDiv lunch"><img src="../src/dinner.jpg"width="80px"></div>
+        <div class="filterDiv bevarages"><img src="../src/footer.jpg"width="80px"></div>
+        <div class="filterDiv dinner"><img src="../src/idli.jpg"width="80px"></div>
+        <div class="filterDiv breakfast"><img src="../src/img.jpg"width="80px"></div>
+      </div><br><br><br><br><br><br>
+
+
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start  text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+            style="background-color:purple;">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span style="color:white;">Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3" style="color:purple;"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="home.html" class="text-reset">Home</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset">About Us</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Menu</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Contact Us</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3" style="color:purple;"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3" style="color:purple;"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3" style="color:purple;"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3" style="color:purple;"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color:purple;color: white;">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+
+    <script>
+        filterSelection("all")
+        function filterSelection(c) {
+          var x, i;
+          x = document.getElementsByClassName("filterDiv");
+          if (c == "all") c = "";
+          for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+          }
+        }
+        
+        function w3AddClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+          }
+        }
+        
+        function w3RemoveClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+              arr1.splice(arr1.indexOf(arr2[i]), 1);     
+            }
+          }
+          element.className = arr1.join(" ");
+        }
+        
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function(){
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+          });
+        }
+        </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
