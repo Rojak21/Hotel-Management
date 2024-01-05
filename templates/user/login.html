@@ -5,11 +5,11 @@
 
 
 {% block content %}
-<div style="position: relative;">
-    <img src="{% static 'images/login.png' %}" alt="Profile" class="profile-img" width="100%" height="100%" />
-        <section class="bg-gray-200 dark:bg-gray-100" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+<div class="relative min-h-screen flex">
+    <img src="{% static 'images/login.png' %}" alt="Profile" class="profile-img h-auto" width="100%" height="100%" />
+        <section class="bg-gray-200 dark:bg-gray-100" style="position: absolute;  margin-top:10%; top:20%; left: 65%; transform: translate(-50%, -50%);">
             {% comment %} <div class="flex flex-col items-center justify-center px-2 py-8 mx-auto md:h-screen lg:py-0"> {% endcomment %}
-                <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-500 dark:border-gray-500">
+                <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0  sm:max-w-md xl:p-9 dark:bg-gray-500 dark:border-gray-500">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Sign in to your account
@@ -50,7 +50,7 @@
                             <div class="flex items-center justify-between">
                                 <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                             </div>
-                            <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                            <button type="submit" class="w-full text-dark bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-dark dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Don’t have an account yet? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
                             </p>
