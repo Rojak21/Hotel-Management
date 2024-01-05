@@ -12,7 +12,8 @@ urlpatterns = [
     path('menu/', menu, name='menu'),
     path('Create_item/', Create_item, name='Create_item'),
     path('delete_item/<int:item_id>/', delete_item, name='delete_item'),
-    path('update_item/<int:item_id>/', update_item, name='update_item'),
+    # path('update_item/<int:item_id>/', update_item, name='update_item'),
+    path('update_item/', update_item, name='update_item'),
 ]
 
 if settings.DEBUG:

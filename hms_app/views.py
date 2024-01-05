@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from .models import Items, UserProfile
@@ -13,7 +13,7 @@ def index(request):
     return render(request, 'user/index.html', {'title':'index'})
 
 def dashboard(request):
-    return render(request, 'Dashboard/dashboard.html')
+    return render(request, 'Dashboard/product.html')
 
 def aboutus(request):
     return render(request, 'user/about.html')
@@ -83,18 +83,33 @@ def delete_item(request, item_id):
 
     return render(request, 'Dashboard/delete_item.html', {'item': item})
 
-def update_item(request, item_id):
-    item = get_object_or_404(Items, item_id=item_id)
+# def update_item(request, item_id):
+#     item = get_object_or_404(Items, item_id=item_id)
 
+#     if request.method == 'POST':
+#         form = UpdateItemForm(request.POST, request.FILES, instance=item)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Item updated successfully.')
+#             return redirect('menu')  # Redirect to the menu page after form submission
+#         else:
+#             messages.error(request, 'Error updating item. Please check the form.')
+#     else:
+#         form = UpdateItemForm(instance=item)
+
+#     return render(request, 'Dashboard/product.html', {'form': form, 'item': item})
+
+def update_item(request):
     if request.method == 'POST':
-        form = UpdateItemForm(request.POST, request.FILES, instance=item)
+        item_id = request.POST.get('id')
+        item = get_object_or_404(Items, pk=item_id)
+        form = UpdateItemForm(request.POST, instance=item)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Item updated successfully.')
-            return redirect('menu')  # Redirect to the menu page after form submission
+            return JsonResponse({'status': 'success', 'message': 'Item updated successfully'})
         else:
-            messages.error(request, 'Error updating item. Please check the form.')
+            errors = form.errors.as_json()
+            return JsonResponse({'status': 'error', 'errors': errors})
     else:
-        form = UpdateItemForm(instance=item)
-
-    return render(request, 'Dashboard/update_item.html', {'form': form, 'item': item})
+        # Handle other HTTP methods or redirect
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
