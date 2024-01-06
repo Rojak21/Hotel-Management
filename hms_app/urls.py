@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import  Create_item, aboutus, dashboard, delete_item,index, menu,signin,signup, update_item
+from .views import  Create_item, aboutus, dashboard, delete_item,index, item_list, menu,signin,signup, update_item
 
 urlpatterns = [
     path('', index, name='home'),
@@ -10,6 +10,7 @@ urlpatterns = [
     path('dashboard/', dashboard, name='dashboard'),
     path('aboutus/', aboutus, name='aboutus'),
     path('menu/', menu, name='menu'),
+    path('item_list/', item_list, name='item_list'),
     path('Create_item/', Create_item, name='Create_item'),
     path('delete_item/<int:item_id>/', delete_item, name='delete_item'),
     # path('update_item/<int:item_id>/', update_item, name='update_item'),

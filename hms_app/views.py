@@ -13,7 +13,7 @@ def index(request):
     return render(request, 'user/index.html', {'title':'index'})
 
 def dashboard(request):
-    return render(request, 'Dashboard/product.html')
+    return render(request, 'Dashboard/dashboard.html')
 
 def aboutus(request):
     return render(request, 'user/about.html')
@@ -55,6 +55,10 @@ def menu(request):
     menu_items = Items.objects.all()
     return render(request, 'Dashboard\product.html', {'menu_items': menu_items})
 
+def item_list(request):
+    menu_items = Items.objects.all()
+    return render(request, 'Dashboard\item_list.html', {'menu_items': menu_items})
+
 def Create_item(request):
     menu_items = Items.objects.all()
     
@@ -83,8 +87,9 @@ def delete_item(request, item_id):
 
     return render(request, 'Dashboard/delete_item.html', {'item': item})
 
-# def update_item(request, item_id):
-#     item = get_object_or_404(Items, item_id=item_id)
+
+def update_item(request, item_id):
+    item = get_object_or_404(Items, item_id=item_id)
 
 #     if request.method == 'POST':
 #         form = UpdateItemForm(request.POST, request.FILES, instance=item)
