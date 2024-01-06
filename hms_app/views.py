@@ -88,8 +88,8 @@ def delete_item(request, item_id):
     return render(request, 'Dashboard/delete_item.html', {'item': item})
 
 
-def update_item(request, item_id):
-    item = get_object_or_404(Items, item_id=item_id)
+# def update_item(request, item_id):
+#     item = get_object_or_404(Items, item_id=item_id)
 
 #     if request.method == 'POST':
 #         form = UpdateItemForm(request.POST, request.FILES, instance=item)
@@ -118,3 +118,4 @@ def update_item(request):
     else:
         # Handle other HTTP methods or redirect
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    
