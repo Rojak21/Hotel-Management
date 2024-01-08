@@ -1,8 +1,8 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
-from .models import Items, UserProfile
-from .forms import CreateItemForm, SigninForm, SignupForm, UpdateItemForm
+from .models import Items, Orders, UserProfile
+from .forms import CreateItemForm, CreateOrderForm, SigninForm, SignupForm, UpdateItemForm
 import logging
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password
@@ -77,33 +77,6 @@ def Create_item(request):
 
     return render(request, 'Dashboard\product.html', {'menu_items': menu_items, 'form': form})
 
-def delete_item(request, item_id):
-    item = get_object_or_404(Items, item_id=item_id)
-
-    if request.method == 'POST':
-        item.delete()
-        messages.success(request, 'Item deleted successfully.')
-        return redirect('menu')  # Redirect to the menu page after deletion
-
-    return render(request, 'Dashboard/delete_item.html', {'item': item})
-
-
-# def update_item(request, item_id):
-#     item = get_object_or_404(Items, item_id=item_id)
-
-#     if request.method == 'POST':
-#         form = UpdateItemForm(request.POST, request.FILES, instance=item)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Item updated successfully.')
-#             return redirect('menu')  # Redirect to the menu page after form submission
-#         else:
-#             messages.error(request, 'Error updating item. Please check the form.')
-#     else:
-#         form = UpdateItemForm(instance=item)
-
-#     return render(request, 'Dashboard/product.html', {'form': form, 'item': item})
-
 def update_item(request):
     if request.method == 'POST':
         item_id = request.POST.get('id')
@@ -118,4 +91,55 @@ def update_item(request):
     else:
         # Handle other HTTP methods or redirect
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
-    
+
+def delete_item(request):
+    if request.method == 'POST':
+        item_id = request.POST.get('id')
+        order = get_object_or_404(Items, pk=item_id)
+        order.delete()
+        return redirect('item_list')  # Redirect to a suitable page after deletion
+    else:
+        return render(request, 'Dashboard/order.html') 
+
+
+def create_orders(request):
+    items = Items.objects.all()
+    orders = Orders.objects.all()
+
+    if request.method == 'POST':
+        form = CreateOrderForm(request.POST)
+        if form.is_valid():
+            order = form.save()
+            messages.success(request, 'Order created successfully.')
+            return redirect('create_orders')  # Redirect to the same page after form submission
+        else:
+            logger.error(f"Form errors: {form.errors}")
+            messages.error(request, 'Error creating order. Please check the form data.')
+    else:
+        form = CreateOrderForm()
+
+    return render(request, 'Dashboard/order.html', {'items': items, 'orders': orders, 'form': form})
+
+def update_order(request):
+    if request.method == 'POST':
+        order_id = request.POST.get('id')
+        order = get_object_or_404(Orders, pk=order_id)
+        form = CreateOrderForm(request.POST, instance=order)
+        if form.is_valid():
+            form.save()
+            return redirect('create_orders')
+        else:
+            errors = form.errors.as_json()
+            return JsonResponse({'status': 'error', 'errors': errors})
+    else:
+        # Handle other HTTP methods or redirect
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
+def delete_order(request):
+    if request.method == 'POST':
+        order_id = request.POST.get('id')
+        order = get_object_or_404(Orders, pk=order_id)
+        order.delete()
+        return redirect('create_orders')  # Redirect to a suitable page after deletion
+    else:
+        return render(request, 'Dashboard/order.html') 

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import authenticate
 from django.utils.translation import gettext_lazy as _
-from .models import Items, UserProfile
+from .models import Items, Orders, UserProfile
 from django.contrib.auth.hashers import make_password
 
 class SignupForm(forms.ModelForm):
@@ -39,3 +39,13 @@ class UpdateItemForm(forms.ModelForm):
     class Meta:
         model = Items
         fields = ['item_id','itemname', 'image', 'price', 'category', 'description']
+        
+class CreateOrderForm(forms.ModelForm):
+    class Meta:
+        model = Orders
+        fields = ['itemname', 'price', 'quantity', 'totalamount']
+        
+# class UpdateOrderForm(forms.ModelForm):
+#     class Meta:
+#         model = Orders
+#         fields = ['itemname', 'price', 'quantity', 'totalamount']

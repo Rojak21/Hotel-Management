@@ -13,5 +13,13 @@ class Items(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.CharField(max_length=20)
     description = models.TextField()
+
+class Orders(models.Model):
+    order_id = models.AutoField(primary_key=True)
+    itemname =  models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    quantity = models.IntegerField()
+    totalamount = models.DecimalField(max_digits=8, decimal_places=2)
+    
     
 
