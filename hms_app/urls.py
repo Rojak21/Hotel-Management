@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import  Create_item, aboutus, create_orders, dashboard, delete_item, delete_order,index, item_list, menu,signin,signup, update_item, update_order
+from .views import  Create_item, aboutus, create_orders, dashboard,delete_item, delete_order,index, item_list, menu,signin,signup,update_item, update_order
 
 urlpatterns = [
     path('', index, name='home'),

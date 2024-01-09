@@ -1,3 +1,4 @@
+from datetime import date, timezone
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
@@ -143,3 +144,4 @@ def delete_order(request):
         return redirect('create_orders')  # Redirect to a suitable page after deletion
     else:
         return render(request, 'Dashboard/order.html') 
+    

@@ -21,5 +21,11 @@ class Orders(models.Model):
     quantity = models.IntegerField()
     totalamount = models.DecimalField(max_digits=8, decimal_places=2)
     
+    def calculate_profit(self):
+        cost = self.price * self.quantity
+        profit = self.totalamount - cost
+        return profit
+
+    
     
 
