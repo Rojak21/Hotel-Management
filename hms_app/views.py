@@ -85,7 +85,8 @@ def update_item(request):
         form = UpdateItemForm(request.POST, instance=item)
         if form.is_valid():
             form.save()
-            return JsonResponse({'status': 'success', 'message': 'Item updated successfully'})
+            messages.success(request, 'Item Updated successfully.')
+            return redirect('item_list')
         else:
             errors = form.errors.as_json()
             return JsonResponse({'status': 'error', 'errors': errors})
@@ -128,6 +129,7 @@ def update_order(request):
         form = CreateOrderForm(request.POST, instance=order)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Order updated successfully.')
             return redirect('create_orders')
         else:
             errors = form.errors.as_json()
@@ -141,6 +143,7 @@ def delete_order(request):
         order_id = request.POST.get('id')
         order = get_object_or_404(Orders, pk=order_id)
         order.delete()
+        messages.success(request, 'Order deleted successfully.')
         return redirect('create_orders')  # Redirect to a suitable page after deletion
     else:
         return render(request, 'Dashboard/order.html') 
