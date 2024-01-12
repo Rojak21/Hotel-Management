@@ -28,6 +28,7 @@ def signup(request):
             messages.success(request, 'Account created successfully. You can now sign in.')
             return redirect('signin')
         else:
+            messages.success(request, 'Password does not match')
             logger.error(f"Form errors: {form.errors}")
     else:
         form = SignupForm()
@@ -43,11 +44,14 @@ def signin(request):
             if check_password(password, user.password):
                 # Passwords match, log the user in
                 # You may set a session variable or create a custom session mechanism
+                messages.success(request, 'Successfully logged in')
                 return redirect('dashboard')  # Replace 'home' with the name of your home view
             else:
                 # Passwords do not match, show an error
+                messages.success(request, 'Invalid Password.')
                 return render(request, 'user/login.html', {'error': 'Invalid password'})
         except UserProfile.DoesNotExist:
+            messages.success(request, 'User does not exist.')
             # User does not exist, show an error
             return render(request, 'user/login.html', {'error': 'User does not exist'})
     return render(request, 'user/login.html')
@@ -132,10 +136,12 @@ def update_order(request):
             messages.success(request, 'Order updated successfully.')
             return redirect('create_orders')
         else:
+            messages.success(request, 'Order does not updated.')
             errors = form.errors.as_json()
             return JsonResponse({'status': 'error', 'errors': errors})
     else:
         # Handle other HTTP methods or redirect
+        messages.success(request, 'Invalid request method.')
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
 def delete_order(request):

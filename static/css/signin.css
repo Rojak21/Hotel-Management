@@ -1,0 +1,109 @@
+.container {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+  }
+
+  .form-container {
+    width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #faf1f1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #131010;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: #211d27;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #b9b0b0;
+  }
+
+  .loginsubmit {
+    padding: 10px;
+    background-color: #087218;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 18px;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .loginsubmit:hover {
+    background-color: #087218;
+  }
+
+  /* a {
+    text-decoration: none;
+    color: #111112;
+    font-size: 18px;
+    transition: color 0.2s ease-in-out;
+  }
+
+  a:hover {
+    color: #010101;
+  } */
+
+  p {
+    text-align: center;
+    margin: 8px;
+  }
+  .alert-container {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  max-width: 300px; /* Adjust as needed */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.alert {
+  margin-bottom: 10px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-color: #bee5eb;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-color: #ffeeba;
+}

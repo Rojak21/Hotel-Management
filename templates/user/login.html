@@ -1,42 +1,27 @@
- {% extends 'user/base_generic.html' %}
+{% extends 'user/base_generic.html' %}
 {% load static%}
 {% block title %}Login - Foodies{% endblock %}
-
-
-
+    
 {% block content %}
-<div class="relative min-h-screen flex">
+<body>
+    {% if messages %}
+    <div class="alert-container mt-4">
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %} 
+ {% comment %} <div class="relative min-h-screen flex">
     <img src="{% static 'images/login.png' %}" alt="Profile" class="profile-img h-auto" width="100%" height="100%" />
         <section class="bg-gray-200 dark:bg-gray-100" style="position: absolute;  margin-top:10%; top:20%; left: 65%; transform: translate(-50%, -50%);">
-            {% comment %} <div class="flex flex-col items-center justify-center px-2 py-8 mx-auto md:h-screen lg:py-0"> {% endcomment %}
                 <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0  sm:max-w-md xl:p-9 dark:bg-gray-500 dark:border-gray-500">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Sign in to your account
                         </h1>
-
-                        {% if messages %}
-                            <div class="messages">
-                                {% for message in messages %}
-                                    <div class="{{ message.tags }}">{{ message }}</div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                        {% if form.errors %}
-                            <div class="errorlist">
-                                <ul>
-                                    {% for field, errors in form.errors.items %}
-                                        <li>
-                                            <ul class="text-red-500 block mb-2 text-md font-medium">
-                                                {% for error in errors %}
-                                                    <li>{{ error }}</li>
-                                                {% endfor %}
-                                            </ul>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% endif %}
                         <form  method="post" action="{% url 'signin' %}" >
                             {% csrf_token %}
                             <div>
@@ -59,37 +44,23 @@
                 </div>
             </div>
           </section>
-    </form>
-{% endblock %} 
+    </form> {% endcomment %}
 
-
-{% comment %} {% block content %}
-  <h2>Login</h2>
-  <form method="post" class="form">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
-{% endblock %}  {% endcomment %}
-
-
-{% comment %} <!-- signin.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Signin</title>
-</head>
-<body>
-    <h2>Signin</h2>
-    <form method="post" action="{% url 'signin' %}">
-        {% csrf_token %}
-        <label for="email">Email:</label>
-        <input type="email" name="email" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" required>
-        <br>
-        <button type="submit">Signin</button>
-    </form>
+    <div class="container ">
+        <div class="form-container" id="login-form">
+            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                Sign in to your account
+            </h1>
+          <form  method="post" action="{% url 'signin' %}" >
+            {% csrf_token %}
+            <label for="emailid">Username</label>
+            <input type="email" name="emailid" id="emailid" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="••••••••" required>
+            <button type="submit" class="loginsubmit">Login</button>
+          </form>
+          <p>Don't have an account? <a href="/signup/" id="signup-link">Sign up</a></p>
+        </div>
+      </div>
 </body>
-</html> {% endcomment %}
+{% endblock %} 

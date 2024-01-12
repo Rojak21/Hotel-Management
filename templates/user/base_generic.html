@@ -1,50 +1,78 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>{% block title %}Foodies{% endblock %}</title>
-</head>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head> 
 <body class="bg-gray-100">
 
-<nav class="bg-white border-b border-gray-200 dark:bg-gray-100">
-    <div class="container mx-auto flex items-center justify-between p-4">
-        <a href="/" class="text-2xl font-semibold text-gray-800 dark:text-dark">Foodie</a>
-        <button data-collapse-toggle="navbar-default" type="button" class="lg:hidden inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-            </svg>
-        </button>
-        <div class="hidden lg:flex w-full lg:w-auto" id="navbar-default">
-            <ul class="font-bold flex flex-col lg:flex-row lg:space-x-8 space-y-4 lg:space-y-0">
+{% comment %} <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center justify-start rtl:justify-end">
+          <a href="" class="flex ms-2 md:me-24  no-underline text-dark">
+            <img src="{% static 'images/logo.jpg' %}" alt="logo" width="25%" height="50%" class="ml-4">
+          </a>
+        </div>
+        </div>
+      </div>
+      <div class="float-end flex items-center text-dark" style="float-left">
+        <div class="flex items-center ms-3">
+            <ul class="font-bold flex flex-col lg:flex-row lg:space-x-8 me-4 lg:space-y-0">
                 <li>
-                    <a href="/aboutus/" class="block py-2 px-3 text-gray-800 dark:text-dark rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 dark:hover:bg-gray-700 dark:hover:text-dark lg:dark:hover:bg-transparent" aria-current="page">
-                        About Us </a>
+                    <a href="/signup/" class="block py-2 px-3 text-gray-800 dark:text-dark rounded no-underline hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 dark:hover:bg-gray-700 dark:hover:text-dark lg:dark:hover:bg-transparent" aria-current="page">
+                        SIGN UP </a>
                 </li>
                 <li>
-                    <a href="/signup/" class="block py-2 px-3 text-gray-800 dark:text-dark rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 dark:hover:bg-gray-700 dark:hover:text-dark lg:dark:hover:bg-transparent" aria-current="page">
-                        Sign Up </a>
-                </li>
-                <li>
-                    <a href="/signin/" class="block py-2 px-3 text-gray-800 dark:text-dark rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 dark:hover:bg-gray-700 dark:hover:text-dark lg:dark:hover:bg-transparent">
-                        Sign In </a>
+                    <a href="/signin/" class="block py-2 px-3 text-gray-800 dark:text-dark rounded no-underline hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 dark:hover:bg-gray-700 dark:hover:text-dark lg:dark:hover:bg-transparent">
+                        SIGN IN </a>
                 </li>
             </ul>
+          <div>
+          </div>
         </div>
+      </div>
     </div>
-</nav>
+  </nav> {% endcomment %}
 
+  <nav class="navbar navbar-expand-lg navbar-light bg-whitefixed-top bg-white border-bottom border-gray-200 dark-bg-gray-800 dark-border-gray-700">
+    <div class="flex items-center justify-start rtl:justify-end">
+        <a href="" class="flex ms-2 md:me-24  no-underline text-dark">
+          <img src="{% static 'images/logo.jpg' %}" alt="logo" width="25%" height="50%" class="ml-4">
+        </a>
+      </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active me-2">
+            <a href="/signup/" class="btn py-2 px-3 text-dark rounded text-decoration-none " aria-current="page">
+                SIGN UP </a>
+        </li>
+        <li class="nav-item me-2">
+            <a href="/signin/"  class="btn py-2 px-3 text-dark rounded text-decoration-none ">
+                SIGN IN </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 <main class="container mx-auto mt-4">
+  
     <!-- Main content goes here -->
     {% block content %}{% endblock %}
 </main>
-        <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-       
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
 </body>
 </html>
