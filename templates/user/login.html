@@ -1,19 +1,57 @@
 {% extends 'user/base_generic.html' %}
 {% load static%}
 {% block title %}Login - Foodies{% endblock %}
-    
+<head>
+    <style>
+        .alert-container {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            max-width: 300px; /* Adjust as needed */
+            z-index: 1000; /* Ensure it's above other elements */
+          }
+          
+          .alert {
+            margin-bottom: 10px;
+          }
+          
+          .alert-success {
+            background-color: #02ac2a;
+            color: #155724;
+            border-color: #c3e6cb;
+          }
+          
+          .alert-danger {
+            background-color: #ed182a;
+            color: #721c24;
+            border-color: #f5c6cb;
+          }
+          
+          .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border-color: #bee5eb;
+          }
+          
+          .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border-color: #ffeeba;
+          }
+    </style>
+</head>
 {% block content %}
 <body>
-    {% if messages %}
     <div class="alert-container mt-4">
         {% for message in messages %}
-            <div class="alert {% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+            <div class="alert
+                {% if message.tags %}{% for tag in message.tags %}{{ tag }} {% endfor %}{% endif %}
+                alert-dismissible fade show" role="alert" style="background:green; color:white">
                 {{ message }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
     </div>
-{% endif %} 
  {% comment %} <div class="relative min-h-screen flex">
     <img src="{% static 'images/login.png' %}" alt="Profile" class="profile-img h-auto" width="100%" height="100%" />
         <section class="bg-gray-200 dark:bg-gray-100" style="position: absolute;  margin-top:10%; top:20%; left: 65%; transform: translate(-50%, -50%);">
@@ -44,22 +82,24 @@
                 </div>
             </div>
           </section>
-    </form> {% endcomment %}
+</form> {% endcomment %}
 
     <div class="container ">
         <div class="form-container" id="login-form">
             <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                Sign in to your account
+                Sign In
             </h1>
           <form  method="post" action="{% url 'signin' %}" >
             {% csrf_token %}
             <label for="emailid">Username</label>
-            <input type="email" name="emailid" id="emailid" required>
+            <input type="email" name="emailid" id="emailid" required placeholder="Username">
+
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="••••••••" required>
-            <button type="submit" class="loginsubmit">Login</button>
+            <br>
+            <button type="submit" class="loginsubmit ">Login</button><br>
           </form>
-          <p>Don't have an account? <a href="/signup/" id="signup-link">Sign up</a></p>
+          <p>Don't have an account? <a href="/signup/" class="link">Sign up</a></p>
         </div>
       </div>
 </body>

@@ -9,7 +9,7 @@ class UserProfile(models.Model):
 class Items(models.Model):
     item_id = models.AutoField(primary_key=True)
     itemname = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='menuapp/images/')
+    image = models.ImageField(upload_to='images/')
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.CharField(max_length=20)
     description = models.TextField()

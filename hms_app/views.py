@@ -1,5 +1,6 @@
 from datetime import date, timezone
-from django.http import HttpResponseRedirect, JsonResponse
+from django.db import IntegrityError
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from .models import Items, Orders, UserProfile
@@ -7,6 +8,7 @@ from .forms import CreateItemForm, CreateOrderForm, SigninForm, SignupForm, Upda
 import logging
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password
+from reportlab.pdfgen import canvas
 
 logger = logging.getLogger(__name__)
 
@@ -19,17 +21,16 @@ def dashboard(request):
 def aboutus(request):
     return render(request, 'user/about.html')
 
-# Example
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            messages.success(request, 'Account created successfully. You can now sign in.')
-            return redirect('signin')
+                user = form.save()
+                messages.success(request, 'Account created successfully. You can now sign in.')
+                return redirect('signin')
         else:
-            messages.success(request, 'Password does not match')
-            logger.error(f"Form errors: {form.errors}")
+             logger.error(f"Form errors: {form.errors}")
+             print(f'Form errors: {form.errors}')
     else:
         form = SignupForm()
     return render(request, 'user/register.html', {'form': form, 'title': 'register here'})
@@ -38,23 +39,19 @@ def signin(request):
     if request.method == 'POST':
         emailid = request.POST['emailid']
         password = request.POST['password']
-    # Assuming you have a User model with fields 'username' and 'password'
         try:
             user = UserProfile.objects.get(emailid=emailid)
             if check_password(password, user.password):
-                # Passwords match, log the user in
-                # You may set a session variable or create a custom session mechanism
                 messages.success(request, 'Successfully logged in')
                 return redirect('dashboard')  # Replace 'home' with the name of your home view
             else:
-                # Passwords do not match, show an error
-                messages.success(request, 'Invalid Password.')
+                messages.error(request, 'Invalid Password.')
                 return render(request, 'user/login.html', {'error': 'Invalid password'})
         except UserProfile.DoesNotExist:
             messages.success(request, 'User does not exist.')
-            # User does not exist, show an error
             return render(request, 'user/login.html', {'error': 'User does not exist'})
     return render(request, 'user/login.html')
+
 
 def menu(request):
     menu_items = Items.objects.all()
@@ -116,8 +113,10 @@ def create_orders(request):
         form = CreateOrderForm(request.POST)
         if form.is_valid():
             order = form.save()
+            pdf_response = generate_pdf_bill(Orders)
             messages.success(request, 'Order created successfully.')
-            return redirect('create_orders')  # Redirect to the same page after form submission
+            # return redirect('create_orders')  # Redirect to the same page after form submission
+            return pdf_response
         else:
             logger.error(f"Form errors: {form.errors}")
             messages.error(request, 'Error creating order. Please check the form data.')
@@ -153,4 +152,36 @@ def delete_order(request):
         return redirect('create_orders')  # Redirect to a suitable page after deletion
     else:
         return render(request, 'Dashboard/order.html') 
+
+# def generate_pdf_bill(order):
+#     # Create a PDF response object
+#     response = HttpResponse(content_type='application/pdf')
+#     response['Content-Disposition'] = f'filename=order_{Orders.order_id}_bill.pdf'
+
+#     # Create PDF document
+#     p = canvas.Canvas(response)
+
+#     # Add header
+#     p.drawString(100, 800, f'Order ID: {Orders.order_id}')
     
+#     # Add table header
+#     p.drawString(100, 780, 'Item Name')
+#     p.drawString(200, 780, 'Quantity')
+#     p.drawString(300, 780, 'Price')
+#     p.drawString(400, 780, 'Total')
+
+#     # Add table rows
+#     y = 760
+#     for item in Orders:
+#         p.drawString(100, y, item.itemname)
+#         p.drawString(200, y, str(item.quantity))
+#         p.drawString(300, y, str(item.price))
+#         p.drawString(400, y, str(item.totalamount))
+#         y -= 20
+
+#     # Add more content as needed
+
+#     p.showPage()
+#     p.save()
+
+#     return response

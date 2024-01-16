@@ -10,13 +10,14 @@
     {% if messages %}
     <div class="alert-container mt-4">
         {% for message in messages %}
-            <div class="alert {% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+            <div class="alert {% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert"style="background:green;color:white" >
                 {{ message }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
     </div>
 {% endif %} 
+
 
 {% comment %} <div class="relative min-h-screen flex">
     <img src="{% static 'images/signup.png' %}" alt="Profile" class="profile-img" width="100%" height="100%" />
@@ -60,21 +61,29 @@
       <h1>Sign Up</h1>
       <form class="space-y-4 md:space-y-6"method="post" action="{% url 'signup' %}">
         {% csrf_token %}
-        <label for="new-username">Fullname</label>
-        <input type="text" name="fullname" id="id_fullname" required>
 
-        <label for="new-email">Email</label>
-        <input type="email" name="emailid" id="id_email" required>
+        {% comment %} {{ form.errors }}  {% endcomment %}
 
-        <label for="new-password">Password</label>
-        <input type="password" name="password1" id="id_password1" required>
+        <label for="fullname">Fullname</label>
+        {{ form.fullname.errors }}
+        <input type="text" name="fullname" id="id_fullname" required  placeholder="Fullname">
 
-        <label for="new-password">Confirm password</label>
-        <input type="password" name="password2" id="id_password2" required>
+        <label for="emailid">Email</label>
+        <input type="email" name="emailid" id="id_email" required  placeholder="Email">
+        <span style="color:red">{{ form.emailid.errors }}</span>
+
+        <label for="password1">Password</label>
+        {% comment %} {{ form.password1.errors }} {% endcomment %}
+        <input type="password" name="password1" id="id_password1" required  placeholder="••••••••">
+
+        <label for="password2">Confirm password</label>
+        <input type="password" name="password2" id="id_password2" required  placeholder="••••••••">
+        <span style="color:red">{{ form.password2.errors }}</span>
 
         <button type="submit" class="loginsubmit">Sign Up</button>
       </form>
-      <p>Already have an account? <a href="/signin/">Login</a></p>
+      <br>
+      <p>Already have an account? <a href="/signin/" class="link">Login</a></p>
     </div>
   </div>
 </body>

@@ -18,6 +18,14 @@ class SignupForm(forms.ModelForm):
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Passwords do not match")
         return password2
+    
+    def clean_emailid(self):
+        emailid = self.cleaned_data.get('emailid')
+        try:
+            existing_user = UserProfile.objects.get(emailid=emailid)
+            raise forms.ValidationError("User profile with this Emailid already exists.")
+        except UserProfile.DoesNotExist:
+            return emailid
 
     def save(self, commit=True):
         user = super().save(commit=False)
