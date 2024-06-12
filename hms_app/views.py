@@ -113,10 +113,10 @@ def create_orders(request):
         form = CreateOrderForm(request.POST)
         if form.is_valid():
             order = form.save()
-            pdf_response = generate_pdf_bill(Orders)
+            # pdf_response = generate_pdf_bill(Orders)
             messages.success(request, 'Order created successfully.')
-            # return redirect('create_orders')  # Redirect to the same page after form submission
-            return pdf_response
+            return redirect('create_orders')  # Redirect to the same page after form submission
+            # return pdf_response
         else:
             logger.error(f"Form errors: {form.errors}")
             messages.error(request, 'Error creating order. Please check the form data.')
